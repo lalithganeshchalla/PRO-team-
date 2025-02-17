@@ -1,13 +1,13 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Button, Box, InputBase, Container, Grid, Card, CardContent } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import image1 from "./ccc.jpg";
-import intenship from "./intenship.png";
-import mentors from "./mentors.png";
-import jobs from "./jobs.png";
-import more from "./more.png";
-import awades from "./awades.png";
-import aechives from "./aechives.png";
+import image1 from "./assets/ccc.jpg";
+import intenship from "./assets/intenship.png";
+import mentors from "./assets/mentors.png";
+import jobs from "./assets/jobs.png";
+import more from "./assets/more.png";
+import awades from "./assets/awades.png";
+import aechives from "./assets/aechives.png";
 
 const Home = () => {
   return (
