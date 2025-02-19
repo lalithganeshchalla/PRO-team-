@@ -1,12 +1,24 @@
 import React from 'react';
 import { Box, Grid, Typography, Button, Card, CardContent } from '@mui/material';
-import image from './assets./image.png';
-import masterCodeImage from './assets./master_code_image.png';
+
+import image from './assets/undraw.svg';
+import logo from './assets/Logo.png';
 
 const CareerPlan = () => {
 
   const dottedButtonStyle = {
-    border: '1px dashed #ccc',
+    border: '1px dashed black',
+    padding: '12px 24px',
+    width: '100%',
+    fontSize: '0.5rem',
+    textTransform: 'none',
+    fontFamily: 'Inter, sans-serif',
+    color: 'black',
+    borderRadius: '100px',
+  };
+
+  const dottedButtonStyl = {
+    border: '2px dashed skyblue',
     padding: '12px 24px',
     width: '100%',
     fontSize: '0.5rem',
@@ -36,7 +48,7 @@ const CareerPlan = () => {
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Box sx={{ display: 'flex', alignItems: 'top', mb: 4 }}>
-                  <img src={masterCodeImage} alt="Master Code" style={{ maxWidth: '200px', maxHeight: '75px', marginRight: '15px' }} />
+                  <img src={logo} alt="MasterCode" style={{ maxWidth: '200px', maxHeight: '75px', marginRight: '15px' }} />
                 </Box>
                 <img src={image} alt="image" style={{ maxWidth: '100%', height: 'auto' }} />
               </Grid>
@@ -51,7 +63,7 @@ const CareerPlan = () => {
 
                   <Grid container spacing={1} sx={{ mb: 1 }}>
                     <Grid item xs={5}>
-                      <Button variant="outlined" sx={dottedButtonStyle}>To find job</Button>
+                      <Button variant="outlined" sx={dottedButtonStyl}>To find job</Button>
                     </Grid>
                     <Grid item xs={7}>
                       <Button variant="outlined" sx={dottedButtonStyle}>To Host an Event</Button>
@@ -66,7 +78,16 @@ const CareerPlan = () => {
                       <Button variant="outlined" sx={dottedButtonStyle}>Data Scientists</Button>
                     </Grid>
                   </Grid>
+                  <Typography variant="h5" sx={{ mb: 1, fontSize: '15px', fontFamily: 'Inter, sans-serif' }}>Carrer Goal</Typography>
 
+                  <Grid container spacing={1}>
+                    <Grid item xs={8}>
+                      <Button variant="outlined" sx={dottedButtonStyl}>Grow in my current carrer</Button>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <Button variant="outlined" sx={dottedButtonStyle}>Transition into a new carrer</Button>
+                    </Grid>
+                  </Grid>
                 </Box>
               </Grid>
             </Grid>
@@ -98,9 +119,7 @@ const CareerPlan = () => {
         </CardContent>
       </Card>
     </Box>
-    
   );
 };
-
 
 export default CareerPlan;

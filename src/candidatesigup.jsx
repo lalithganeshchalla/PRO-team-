@@ -5,11 +5,13 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import image from "./assets/undraw.svg";
+import { useNavigate } from "react-router-dom";
 
 
-const SignUp = () => {
+const CandidateSignUp = () => {
   const [selectedRole, setSelectedRole] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   // Validation Schema using Yup
   const schema = yup.object().shape({
@@ -45,7 +47,6 @@ const SignUp = () => {
           </Typography>
         </Box>
 
-        {/* Role Selection Tabs */}
         <Tabs value={selectedRole} onChange={(e, newValue) => setSelectedRole(newValue)} centered>
           <Tab label="Candidate" />
           <Tab label="Judge" />
@@ -155,7 +156,7 @@ const SignUp = () => {
               </Box>
 
               {/* Submit Button */}
-              <Button type="submit" fullWidth variant="contained" sx={{ background: "#000", color: "#fff", marginTop: 2 }}>
+              <Button type="submit" fullWidth variant="contained" sx={{ background: "#000", color: "#fff", marginTop: 2 }} onClick={() => navigate("/otp")}>
                 Sign Up
               </Button>
 
@@ -171,4 +172,4 @@ const SignUp = () => {
   );
 
 };
-export default SignUp;
+export default CandidateSignUp;

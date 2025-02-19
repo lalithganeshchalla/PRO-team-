@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const OTPVerification = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timer, setTimer] = useState(43);
-
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   const handleChange = (e, index) => {
     const value = e.target.value;
     if (!isNaN(value) && value.length <= 1) {
@@ -45,8 +49,8 @@ const OTPVerification = () => {
           Don’t receive OTP? Resend in <span style={{ color: 'red' }}>{timer} sec</span>
         </p>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-          <button style={{ padding: '10px 20px', border: '1px solid #ccc', borderRadius: '5px', background: 'none' }}>Close</button>
-          <button style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', borderRadius: '5px', border: 'none' }}>Verify Email</button>
+          <button style={{ padding: '10px 20px', border: '1px solid #ccc', borderRadius: '25px', background: 'none'  }} onClick={handleGoBack}>Close</button>
+          <button style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', borderRadius: '25px', border: 'none' }} onClick={() => navigate("/SUPC")}>Verify Email</button>
         </div>
       </div>
     </div>
