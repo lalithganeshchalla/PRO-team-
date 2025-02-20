@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Button, Box, InputBase, Container, Grid, Card, CardContent } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import Buttons from "./components/ButtonDropDown";
 import image1 from "./assets/ccc.jpg";
 import intenship from "./assets/intenship.png";
 import mentors from "./assets/mentors.png";
@@ -8,18 +9,19 @@ import jobs from "./assets/jobs.png";
 import more from "./assets/more.png";
 import awades from "./assets/awades.png";
 import aechives from "./assets/aechives.png";
+import logo from "./assets/Logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <Box>
       {/* Navbar */}
       <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0" }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="h6" sx={{ fontWeight: "bold", color: "#000" }}>
-            <span style={{ background: "#66ff66", padding: "5px 10px", borderRadius: "20px" }}>Master</span> Code
-          </Typography>
+        <Toolbar sx={{ display: "flex"}}>
+          <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px" }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px",color:"#b5b5b5" }}>
               <SearchIcon />
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
@@ -28,7 +30,10 @@ const Home = () => {
             <Button sx={{ color: "#000" }}>Competitions</Button>
             <Button sx={{ color: "#000" }}>Mentors</Button>
             <Button sx={{ color: "#000" }}>Practice</Button>
-            <Button variant="contained" sx={{ background: "#007bff" }}>Login</Button>
+            <Buttons />
+
+            <Button variant="contained"  sx={{ background: "#007bff",borderRadius:"25px" }} onClick={() => navigate("/signup")}>Login</Button>
+            <Button variant="outlined" sx={{ borderRadius:"25px"  }}>Host</Button>
           </Box>
         </Toolbar>
       </AppBar>

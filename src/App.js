@@ -1,16 +1,28 @@
+  import './App.css';
+  import React, {useState} from 'react';
+  import HomeDefault from './HomeDefault';
+  import SplashScreen from './splashscreen';
+  import SignUp from './candidatesigup';
+  import OTPVerification from './SignUpverification';
+  import SignUpPlanCarrer from './SignUpPlanCarrer';
+  import SignUpPlanCarrerSelection from './SignUpPlanCarrerSelection';
+  import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+  function App() {
+    const[loading,setLoading]=useState(true);
+    return (
+      <>
+      <Router>
+      <Routes>
+        <Route path="/" element={loading ? <SplashScreen onFinish={()=>setLoading(false)}/> : <HomeDefault/>} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<OTPVerification />} />
+        <Route path="/SUPC" element={<SignUpPlanCarrer />} />
+        <Route path="/SUPCS" element={<SignUpPlanCarrerSelection />} />
 
-import './App.css';
-import React, {useState} from 'react';
-import HomeDefault from './HomeDefault';
-import SplashScreen from './splashscreen';
-//this app.js file
-function App() {
-  const[loading,setLoading]=useState(true);
-  return (
-    <>
-    {loading ? <SplashScreen onFinish={()=>setLoading(false)}/> : <HomeDefault/>}
-    </>
-  );
-}
+      </Routes>
+    </Router>
+      </>
+    );
+  }
 
-export default App;
+  export default App;
