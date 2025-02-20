@@ -34,8 +34,9 @@ import {
   ArrowDropDown,
   Share,
 } from "@mui/icons-material";
-import masterCodeImage from "./master_code_image.png"; // Navigation logo
+import masterCodeImage from "./assets./master_code_image"; // Navigation logo
 
+import taskImage from "./assets./taskImage.png"; // Navigation logo
 
 const menuItems = [
   { text: "Activities", icon: <Dashboard /> },
@@ -71,14 +72,14 @@ export default function ThreeCardsLayout() {
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 2, p: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 0.6, p: 2 }}>
       <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
         <CardContent sx={{ display: "flex", alignItems: "center", gap: 1, width: "100%", color: "black", p: 0, "&:last-child": { p: 0 } }}>
-          {/* Logo */}
+        
           <img src={masterCodeImage} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
-          {/* Search Bar */}
+          
           <TextField variant="outlined" placeholder="Search..." size="small" sx={{ width: 250, ml: 2 }} />
-          {/* Navigation Items */}
+          
           <Stack direction="row" spacing={2} alignItems="center" sx={{ flexGrow: 1, justifyContent: "flex-end" }}>
             {"Internships Jobs Competitions Mentors Practice".split(" ").map((item, index) => (
               <Typography key={index} variant="body1" color="black">{item}</Typography>
@@ -94,9 +95,9 @@ export default function ThreeCardsLayout() {
         </CardContent>
       </Card>
 
-      {/* Main Content */}
+      
       <Box sx={{ display: "flex", flexGrow: 1, gap: 2 }}>
-        {/* Menu Card */}
+        
         <Card sx={{ width: 200, height: "90%", display: "flex", flexDirection: "column", alignItems: "center", p: 2, borderRadius: 0 }}>
           <CardContent sx={{ width: "100%" }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
@@ -107,7 +108,7 @@ export default function ThreeCardsLayout() {
             <Divider sx={{ my: 1, width: "100%" }} />
             <Stack spacing={2}>
               {menuItems.map((item, index) => (
-                <Box key={index} sx={{ display: "flex", alignItems: "center", gap: 1, pl: 1,            bgcolor: item.text === "Activities" ? "lightgreen" : "transparent" 
+                <Box key={index} sx={{ display: "flex", alignItems: "center", gap: 1, pl: 1,            bgcolor: item.text === "Tasks" ? "lightgreen" : "transparent" 
                 }}>
                   {item.icon}
                   <Typography variant="body1" sx={{ color: item.textColor || "black" }}>{item.text}</Typography>
@@ -117,12 +118,12 @@ export default function ThreeCardsLayout() {
           </CardContent>
         </Card>
 
-        {/* Content Card */}
+    
         <Card sx={{ flexGrow: 1, height: "90%", display: "flex", flexDirection: "column", p: 2 }}>
           <CardContent sx={{ color: "black" }}>
-            <Typography variant="h6" fontWeight="bold" sx={{ mb: 0 }}>Activities</Typography>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 0 }}>Tasks</Typography>
             <Divider sx={{ mt: 1, width: "100%" }} />
-             {/* Category Filter (Text Format) */}
+             
 <Box sx={{ mt: 2, display: "flex", justifyContent: "",color:"black"
  }}>
   <Stack
@@ -142,7 +143,7 @@ export default function ThreeCardsLayout() {
   </Stack>
 </Box>
 
-            {/* Search, Filter, and Sort Row */}
+            
             <Box sx={{ mt: 2, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}>
               <TextField
                 variant="outlined"
@@ -187,44 +188,23 @@ export default function ThreeCardsLayout() {
               </Menu>
             </Box>
 
-            {/* New Inner Card with Email Notifications, Registration Form, and Share Button */}
-            <Card sx={{ mt: 2, p: 2, backgroundColor: "#f9f9f9", display: "flex", flexDirection: "column", gap: 2 }}>
-              {/* Top Section - Image + Details + Email Notifications */}
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                {/* Event Image & Info */}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                  <img src={masterCodeImage} alt="Event" style={{ width: 80, height: 30, borderRadius: 8 }} />
-                  <Box>
-                    <Typography variant="h6">Master Code Talent Room 2025</Typography>
-                    <Typography variant="body2">Registered on: Feb 7, 2025, 07:35 PM IST</Typography>
-                    <Typography variant="body2">Deadline: Feb 14, 2025</Typography>
-                  </Box>
-                </Box>
+        
+            <Card sx={{ mt: 2, p: 2, backgroundColor: "#f9f9f9", display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+  
+  <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <img src={taskImage} alt="Event" style={{ width: 300, height: 200, borderRadius: 4 }} />
+  </Box>
 
-                {/* Email Notifications Switch */}
-                <Stack direction="row" alignItems="center">
-                  <Typography variant="body2">Email Notifications</Typography>
-                  <Switch
-                    checked={emailNotifications}
-                    onChange={() => setEmailNotifications(!emailNotifications)}
-                  />
-                </Stack>
-              </Box>
+  
+  <Box sx={{ textAlign: "center", mt: 2 }}>
+    <Typography variant="body1">You have not applied to any Opportunity.</Typography>
+    <Typography variant="body2" sx={{ color: "gray" }}>Keep Applying!</Typography>
+    <Button variant="contained" sx={{ mt: 1 }}>Explore Now</Button>
+  </Box>
+</Card>
 
-              {/* Bottom Section - Registration Form & Share Button */}
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
-                <Typography variant="body2" sx={{ fontWeight: "bold", color: "blue" }}>Registration Form</Typography>
-                <IconButton color="primary">
-                  <Share />
-                </IconButton>
-              </Box>
-            </Card>
-             {/* Message Section (Bottom Middle) */}
-             <Box sx={{ textAlign: "center", mt: 8, mb: 2 }}>
-              <Typography variant="body1" >You have not applied to any Opportunity.</Typography>
-              <Typography variant="body2" sx={{ color: "gray" }}>Keep Applying!</Typography>
-              <Button variant="contained" sx={{ mt: 1 }}>Explore Now</Button>
-            </Box>
+             
+             
           </CardContent>
         </Card>
       </Box>
