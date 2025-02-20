@@ -18,29 +18,29 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <Box>
-      {/* Navbar */}
-      <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0" }}>
-        <Toolbar sx={{ display: "flex"}}>
-          <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px",color:"#b5b5b5" }}>
+    /* Navbar */
+        <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
               <SearchIcon />
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
-            <Button sx={{ color: "#000" }}>Internships</Button>
+            <Button sx={{ color: "#000",backgroundColor:"#9dff8a"}} onClick={() => navigate("/internship")}>Internships</Button>
             <Button sx={{ color: "#000" }}>Jobs</Button>
             <Button sx={{ color: "#000" }}>Competitions</Button>
             <Button sx={{ color: "#000" }}>Mentors</Button>
             <Button sx={{ color: "#000" }}>Practice</Button>
             <Buttons />
-            <Avatar />
             <LanguageDropDown />
-            <Button variant="outlined" sx={{ borderRadius:"25px"  }}>Host</Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
+            <Avatar />
+            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <Container sx={{ display: "flex", alignItems: "center", marginTop: 5 }}>
       <img src={image1} alt="home" style={{ width: "200px" }} />
         <Box sx={{ textAlign: "left", marginLeft: 4 }}>

@@ -8,6 +8,7 @@
   import SignUpPlanCarrer from './SignUpPlanCarrer';
   import SignUpPlanCarrerSelection from './SignUpPlanCarrerSelection';
   import HomePageWithLogin from './HomePageWithLogin';
+  import Internship  from './Internship';
   import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   function App() {
     const[loading,setLoading]=useState(true);
@@ -19,6 +20,7 @@
         <Route path="/login" element={<CadidateLogin />} />
         <Route path="/withlogin" element={<HomePageWithLogin />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/internship" element={<Internship />} />
         <Route path="/otp" element={<OTPVerification />} />
         <Route path="/SUPC" element={<SignUpPlanCarrer />} />
         <Route path="/SUPCS" element={<SignUpPlanCarrerSelection />} />
