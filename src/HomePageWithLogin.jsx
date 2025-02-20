@@ -11,6 +11,8 @@ import awades from "./assets/awades.png";
 import aechives from "./assets/aechives.png";
 import logo from "./assets/Logo.png";
 import { useNavigate } from "react-router-dom";
+import LanguageDropDown from "./components/LanguageDropDown";
+import Avatar from "./components/Avatars";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -31,7 +33,8 @@ const Home = () => {
             <Button sx={{ color: "#000" }}>Mentors</Button>
             <Button sx={{ color: "#000" }}>Practice</Button>
             <Buttons />
-            <Button variant="contained"  sx={{ background: "#007bff",borderRadius:"25px" }} onClick={() => navigate("/login")}>Login</Button>
+            <Avatar />
+            <LanguageDropDown />
             <Button variant="outlined" sx={{ borderRadius:"25px"  }}>Host</Button>
           </Box>
         </Toolbar>

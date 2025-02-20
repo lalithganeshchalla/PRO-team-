@@ -23,7 +23,7 @@ const InternshipPage = () => {
         </Grid>
       </Grid>
     </Container>
-  );
+  );  
 };
 
 export default InternshipPage;

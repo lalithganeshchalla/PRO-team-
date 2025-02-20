@@ -19,7 +19,7 @@ const DropdownButton = () => {
         sx={{ color: "#000" }} 
         onClick={handleClick}
       >
-        More 🔽
+        En 🔽
       </Button>
 
       <Menu 
@@ -27,12 +27,12 @@ const DropdownButton = () => {
         open={open} 
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Courses</MenuItem>
-        <MenuItem onClick={handleClose}>Scholar Ships</MenuItem>
-        <MenuItem onClick={handleClose}>Cultural Events</MenuItem>
-        <MenuItem onClick={handleClose}>Workshops</MenuItem>
-        <MenuItem onClick={handleClose}>Conference</MenuItem>
-        <MenuItem onClick={handleClose}>Blog</MenuItem>
+        <MenuItem onClick={handleClose}>English </MenuItem>
+        <MenuItem onClick={handleClose}>France</MenuItem>
+        <MenuItem onClick={handleClose}>Italian</MenuItem>
+        <MenuItem onClick={handleClose}>German</MenuItem>
+        <MenuItem onClick={handleClose}>Telugu</MenuItem>
+        <MenuItem onClick={handleClose}>Hindi</MenuItem>
       </Menu>
     </div>
   );
