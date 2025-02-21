@@ -7,7 +7,6 @@ import { CardContent, Divider, TextField } from "@mui/material";
 import { Google, LinkedIn } from "@mui/icons-material";
 import RoleSelector from "./components/RoleSelected";
 
-// ghtaj
 
 const CandidateLogin = () => {
   
@@ -19,7 +18,7 @@ const CandidateLogin = () => {
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 3 }}>
           <img src={logo} alt="Sign Up" style={{ width: "100%", maxWidth: "200px" }} />
           <Typography variant="body1" fontWeight="bold">
-            Sign Up
+            Sign In
           </Typography>
         </Box>
 
@@ -38,7 +37,7 @@ const CandidateLogin = () => {
             <CardContent>
               <Button
                 fullWidth
-                startIcon={<Google sx={{ color: '#DB4437' }} />}
+                startIcon={<Google  sx={{ color: '#DB4437' }} />}
                 variant="outlined"
                 sx={{ mb: 2, textTransform: 'none', color: '#000' , borderColor: '#b5b5b5'}}
               >
