@@ -66,9 +66,9 @@ function App() {
             <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
             <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
               <SearchIcon />
-              <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
+              <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 ,fontSize: "12px" }} />
             </Box>
-            <Button sx={{ color: "#000",}} onClick={() => navigate("/intern")}>Internships</Button>
+            <Button sx={{ color: "#fff" ,backgroundColor:"#9dff8a" ,width:"150px"}} onClick={() => navigate("/internship")}>Internships</Button>
             <Button sx={{ color: "#000" }}>Jobs</Button>
             <Button sx={{ color: "#000" }}>Competitions</Button>
             <Button sx={{ color: "#000" }}>Mentors</Button>

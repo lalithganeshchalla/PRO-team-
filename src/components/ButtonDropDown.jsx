@@ -19,7 +19,7 @@ const DropdownButton = () => {
         sx={{ color: "#000" }} 
         onClick={handleClick}
       >
-        More🔽
+        More🔻
       </Button>
 
       <Menu 

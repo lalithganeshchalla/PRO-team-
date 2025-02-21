@@ -18,7 +18,6 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <Box>
-    /* Navbar */
         <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
           <Toolbar sx={{ display: "flex" }}>
             <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
@@ -27,7 +26,7 @@ const Home = () => {
               <SearchIcon />
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
-            <Button sx={{ color: "#000",backgroundColor:"#9dff8a"}} onClick={() => navigate("/internship")}>Internships</Button>
+            <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
             <Button sx={{ color: "#000" }}>Jobs</Button>
             <Button sx={{ color: "#000" }}>Competitions</Button>
             <Button sx={{ color: "#000" }}>Mentors</Button>
