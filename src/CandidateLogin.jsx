@@ -7,7 +7,7 @@ import { CardContent, Divider, TextField } from "@mui/material";
 import { Google, LinkedIn } from "@mui/icons-material";
 import RoleSelector from "./components/RoleSelected";
 
-
+// ghtaj
 
 const CandidateLogin = () => {
   
