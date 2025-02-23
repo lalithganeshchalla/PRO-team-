@@ -10,11 +10,22 @@ import more from "./assets/more.png";
 import awades from "./assets/awades.png";
 import aechives from "./assets/aechives.png";
 import logo from "./assets/Logo.png";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageDropDown from "./components/LanguageDropDown";
 import Avatar from "./components/Avatars";
+import ProfileUpdation from "./components/ProfileUpdation";
 
 const Home = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const openDrawer = () => {
+      setIsDrawerOpen(true);
+    };
+  
+    const closeDrawer = () => {
+      setIsDrawerOpen(false);
+    };
   const navigate = useNavigate();
   return (
     <Box>
@@ -32,8 +43,9 @@ const Home = () => {
             <Button sx={{ color: "#000" }}>Mentors</Button>
             <Button sx={{ color: "#000" }}>Practice</Button>
             <Buttons />
-            <LanguageDropDown />
-            <Avatar />
+            <LanguageDropDown /> 
+            <Avatar openDrawer={openDrawer} />
+            <ProfileUpdation open={isDrawerOpen} onClose={closeDrawer} />
             <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
             </Box>
           </Toolbar>

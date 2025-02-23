@@ -27,7 +27,7 @@ const Sidebar = ({ onSelect }) => {
 
   // Menu items with icons
   const menuItems = [
-    { text: "Activities", icon: <EventIcon /> },
+    { text: "Activities", icon: <EventIcon />},
     { text: "Team", icon: <TeamIcon /> },
     { text: "Levels", icon: <LevelsIcon /> },
     { text: "Leaderboard", icon: <LeaderboardIcon /> },

@@ -6,7 +6,6 @@ import {
   Typography,
   Stack,
   Divider,
-  Avatar,
   TextField,
   IconButton,
   Button,
@@ -15,17 +14,10 @@ import {
   ToggleButtonGroup,
   ToggleButton,
   Switch,
+  InputBase
 } from "@mui/material";
 import {
-  Dashboard,
-  People,
-  EmojiEvents,
-  Task,
   Notifications,
-  Payment,
-  Support,
-  Settings,
-  ExitToApp,
   Language,
   Brightness4,
   Add,
@@ -34,22 +26,30 @@ import {
   ArrowDropDown,
   Share,
 } from "@mui/icons-material";
-import masterCodeImage from "./master_code_image.png"; // Navigation logo
+import { AppBar, Toolbar } from "@mui/material";
+import LanguageDropDown from "./components/LanguageDropDown";
+import ProfileUpdation from "./components/ProfileUpdation";
+import { useNavigate } from "react-router-dom";
+import Buttons from "./components/ButtonDropDown";
+import logo from "./assets/Logo.png";
+import SearchIcon from '@mui/icons-material/Search';
+import Avatar from "./components/Avatars"
+import {
+  AccountCircle as AccountCircleIcon,
+  Event as EventIcon,
+  Group as TeamIcon,
+  SignalCellularAlt as LevelsIcon,
+  EmojiEvents as LeaderboardIcon,
+  Work as AppliedActivitiesIcon,
+  Assignment as TasksIcon,
+  Notifications as NotificationsIcon,
+  Payment as TransactionsIcon,
+  Support as SupportIcon,
+  Settings as SettingsIcon,
+  Logout as LogoutIcon
+} from "@mui/icons-material";
 
 
-const menuItems = [
-  { text: "Activities", icon: <Dashboard /> },
-  { text: "Teams", icon: <People /> },
-  { text: "Levels", icon: <EmojiEvents /> },
-  { text: "Leaderboard", icon: <EmojiEvents /> },
-  { text: "Applied Activities", icon: <Task /> },
-  { text: "Tasks", icon: <Task /> },
-  { text: "Notifications", icon: <Notifications /> },
-  { text: "Transactions", icon: <Payment /> },
-  { text: "Support", icon: <Support /> },
-  { text: "Settings", icon: <Settings /> },
-  { text: "Logout", icon: <ExitToApp />, textColor: "red" },
-];
 
 export default function ThreeCardsLayout() {
   const [sortAnchorEl, setSortAnchorEl] = useState(null);
@@ -69,13 +69,44 @@ export default function ThreeCardsLayout() {
       setFilter(newFilter);
     }
   };
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+    const openDrawer = () => {
+      setIsDrawerOpen(true);
+    };
+  
+    const closeDrawer = () => {
+      setIsDrawerOpen(false);
+    };
+  const navigate = useNavigate();
+ 
+  
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 2, p: 2 }}>
-      <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
+      <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
+              <SearchIcon />
+              <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
+            </Box>
+            <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/oractice")}>Practice</Button>
+            <Buttons />
+            <LanguageDropDown />
+            <Avatar openDrawer={openDrawer} />
+            <ProfileUpdation open={isDrawerOpen} onClose={closeDrawer} />
+            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>      <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
         <CardContent sx={{ display: "flex", alignItems: "center", gap: 1, width: "100%", color: "black", p: 0, "&:last-child": { p: 0 } }}>
           {/* Logo */}
-          <img src={masterCodeImage} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
+          <img src={logo} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
           {/* Search Bar */}
           <TextField variant="outlined" placeholder="Search..." size="small" sx={{ width: 250, ml: 2 }} />
           {/* Navigation Items */}
@@ -106,13 +137,17 @@ export default function ThreeCardsLayout() {
             <Typography variant="body2" color="textSecondary">user@example.com</Typography>
             <Divider sx={{ my: 1, width: "100%" }} />
             <Stack spacing={2}>
-              {menuItems.map((item, index) => (
-                <Box key={index} sx={{ display: "flex", alignItems: "center", gap: 1, pl: 1,            bgcolor: item.text === "Activities" ? "lightgreen" : "transparent" 
-                }}>
-                  {item.icon}
-                  <Typography variant="body1" sx={{ color: item.textColor || "black" }}>{item.text}</Typography>
-                </Box>
-              ))}
+                    <MenuItem onClick={() => navigate("/activites")}><AccountCircleIcon /> Activities</MenuItem>
+                    <MenuItem onClick={() => navigate("/teams")}><TeamIcon /> Teams</MenuItem>
+                    <MenuItem onClick={() => navigate("/levels")}><LevelsIcon />Levels</MenuItem>
+                    <MenuItem onClick={() => navigate("/leaderboard")}><LeaderboardIcon />Leaderboard</MenuItem>
+                    <MenuItem onClick={() => navigate("/applied")}><AppliedActivitiesIcon />Applied Activities</MenuItem>
+                    <MenuItem onClick={() => navigate("/tasks")}><TasksIcon />Tasks</MenuItem>
+                    <MenuItem onClick={() => navigate("/notifications")}><NotificationsIcon />Notifications</MenuItem>
+                    <MenuItem onClick={() => navigate("/transactions")}><TransactionsIcon />My Transactions</MenuItem>
+                    <MenuItem onClick={() => navigate("/support")}><SupportIcon />Support</MenuItem>
+                    <MenuItem onClick={() => navigate("/settings")}><SettingsIcon />Settings</MenuItem>
+                    <MenuItem onClick={() => navigate("/logout")}><LogoutIcon />Logout</MenuItem>
             </Stack>
           </CardContent>
         </Card>
@@ -135,7 +170,7 @@ export default function ThreeCardsLayout() {
       "Internships", "Jobs", "Workshops", "Conferences", 
       "Creative Events", "Festivals"
     ].map((category) => (
-      <Typography key={category} variant="body">
+      <Typography key={category} variant="body1">
         {category}
       </Typography>
     ))}
@@ -193,7 +228,7 @@ export default function ThreeCardsLayout() {
               <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 {/* Event Image & Info */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                  <img src={masterCodeImage} alt="Event" style={{ width: 80, height: 30, borderRadius: 8 }} />
+                  <img src={logo} alt="Event" style={{ width: 80, height: 30, borderRadius: 8 }} />
                   <Box>
                     <Typography variant="h6">Master Code Talent Room 2025</Typography>
                     <Typography variant="body2">Registered on: Feb 7, 2025, 07:35 PM IST</Typography>
