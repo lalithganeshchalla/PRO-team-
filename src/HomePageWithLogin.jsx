@@ -10,34 +10,48 @@ import more from "./assets/more.png";
 import awades from "./assets/awades.png";
 import aechives from "./assets/aechives.png";
 import logo from "./assets/Logo.png";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LanguageDropDown from "./components/LanguageDropDown";
+import Avatar from "./components/Avatars";
+import ProfileUpdation from "./components/ProfileUpdation";
 
 const Home = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const openDrawer = () => {
+      setIsDrawerOpen(true);
+    };
+  
+    const closeDrawer = () => {
+      setIsDrawerOpen(false);
+    };
   const navigate = useNavigate();
   return (
     <Box>
-      {/* Navbar */}
-      <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0" }}>
-        <Toolbar sx={{ display: "flex"}}>
-          <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px",color:"#b5b5b5" }}>
+        <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
               <SearchIcon />
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
-            <Button sx={{ color: "#000" }}>Internships</Button>
+            <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
             <Button sx={{ color: "#000" }}>Jobs</Button>
             <Button sx={{ color: "#000" }}>Competitions</Button>
             <Button sx={{ color: "#000" }}>Mentors</Button>
             <Button sx={{ color: "#000" }}>Practice</Button>
             <Buttons />
-            <Button variant="contained"  sx={{ background: "#007bff",borderRadius:"25px" }} onClick={() => navigate("/login")}>Login</Button>
-            <Button variant="outlined" sx={{ borderRadius:"25px"  }}>Host</Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
+            <LanguageDropDown /> 
+            <Avatar openDrawer={openDrawer} />
+            <ProfileUpdation open={isDrawerOpen} onClose={closeDrawer} />
+            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <Container sx={{ display: "flex", alignItems: "center", marginTop: 5 }}>
       <img src={image1} alt="home" style={{ width: "200px" }} />
         <Box sx={{ textAlign: "left", marginLeft: 4 }}>

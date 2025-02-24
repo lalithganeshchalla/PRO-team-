@@ -162,7 +162,7 @@ const CandidateSignUp = () => {
 
               {/* Already have an account? */}
               <Typography variant="body2" sx={{ textAlign: "center", marginTop: 2 }}>
-                Already have an account? <span style={{ color: "#00cc00", cursor: "pointer" }}>Sign In</span>
+                Already have an account? <span style={{ color: "#00cc00", cursor: "pointer" }} onClick={() => navigate("/login")}>Sign In</span>
               </Typography>
             </form>
           </Grid>

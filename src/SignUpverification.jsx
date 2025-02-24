@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const OTPVerification = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [timer, setTimer] = useState(43);
+  const [timer] = useState(43);
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate(-1);
