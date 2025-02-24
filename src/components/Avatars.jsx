@@ -1,151 +1,93 @@
-
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
 import React, { useState } from 'react';
-import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select } from 'antd';
+import { Avatar, Box, Typography, Button, Menu, MenuItem, Divider, Badge } from '@mui/material';
+import CircleIcon from '@mui/icons-material/Circle';
+import { useNavigate } from 'react-router-dom';
 
-const { Option } = Select;
+const Avatars = ({ openDrawer }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
-
-
-const App  = () => {
-  const [open, setOpen] = useState(false);
-
-  const showDrawer = () => {
-    setOpen(true);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const onClose = () => {
-    setOpen(false);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
+  const navigate = useNavigate();
 
-return (
-  <>
+  return (
+    <Box>
+      <Button onClick={handleClick} sx={{  }}>
+        <Avatar alt="Tom Holland" src="https://via.placeholder.com/150" />
+       
+      </Button>
 
-  <Space size={16} wrap>
-    <Avatar onClick={showDrawer} style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
-  </Space>
-   <Drawer
-   title="Update your profile"
-   width={720}
-   onClose={onClose}
-   open={open}
-   styles={{
-     body: {
-       paddingBottom: 80,
-     },
-   }}
-   extra={
-     <Space>
-       <Button onClick={onClose}>Close</Button>
-       <Button onClick={onClose} type='primary'>
-         Ok
-       </Button>
-     </Space>
-   }
- >
-   <Form layout="vertical" hideRequiredMark>
-     <Row gutter={16}>
-       <Col span={12}>
-         <Form.Item
-           name="name"
-           label="Name"
-           rules={[{ required: true, message: 'Please enter user name' }]}
-         >
-           <Input placeholder="Please enter user name" />
-         </Form.Item>
-       </Col>
-       <Col span={12}>
-         <Form.Item
-           name="email"
-           label="Email"
-           rules={[{ required: true, message: 'Please enter Email' }]}
-         >
-           <Input
-             style={{ width: '100%' }}
-             addonAfter="gmail.com"
-             placeholder="Please enter Email"
-           />
-         </Form.Item>
-       </Col>
-     </Row>
-     <Row gutter={16}>
-       <Col span={12}>
-         <Form.Item
-           name="education"
-           label="Education"
-           rules={[{ required: true, message: 'Please select an education' }]}
-         >
-           <Select placeholder="Please select an education">
-             <Option value="xiao">10th</Option>
-             <Option value="mao">Intermediate</Option>
-              <Option value="mao">Graduation</Option>
-                <Option value="mao">Post Graduation</Option>
-                  <Option value="mao">Phd</Option>
-           </Select>
-         </Form.Item>
-       </Col>
-       <Col span={12}>
-         <Form.Item
-           name="type"
-           label="Type"
-           rules={[{ required: true, message: 'Please choose the type' }]}
-         >
-           <Select placeholder="Please choose the type">
-             <Option value="private">Student</Option>
-             <Option value="public">Techer</Option>
-             <Option value="protected">Company</Option>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          elevation: 3,
+          sx: {
+            bgcolor: '#e0f7df',
+            borderRadius: 2,
+            padding: 2,
+          
+          },
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+          <Badge
+            overlap="circular"
+            anchorOrigin={{ }}
+            badgeContent={<CircleIcon sx={{ color: '#4caf50', fontSize: 10 }} />}
+          >
+            <Avatar alt="Tom Holland" src="https://via.placeholder.com/150" sx={{ width: 60, height: 60 }} />
+          </Badge>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Tom Holland</Typography>
+            <Typography variant="body2">tomhol@yahoo.com</Typography>
+          </Box>
+        </Box>
 
-           </Select>
-         </Form.Item>
-       </Col>
-     </Row>
-     <Row gutter={16}>
-       <Col span={12}>
-         <Form.Item
-           name="approver"
-           label="Approver"
-           rules={[{ required: true, message: 'Please choose the approver' }]}
-         >
-           <Select placeholder="Please choose the approver">
-             <Option value="jack">Jack Ma</Option>
-             <Option value="tom">Tom Liu</Option>
-           </Select>
-         </Form.Item>
-       </Col>
-       <Col span={12}>
-         <Form.Item
-           name="dateTime"
-           label="DateTime"
-           rules={[{ required: true, message: 'Please choose the dateTime' }]}
-         >
-           <DatePicker.RangePicker
-             style={{ width: '100%' }}
-             getPopupContainer={(trigger) => trigger.parentElement || document.body}
-           />
-         </Form.Item>
-       </Col>
-     </Row>
-     <Row gutter={16}>
-       <Col span={24}>
-         <Form.Item
-           name="description"
-           label="Description"
-           rules={[
-             {
-               required: true,
-               message: 'please enter url description',
-             },
-           ]}
-         >
-           <Input.TextArea rows={4} placeholder="please enter url description" />
-         </Form.Item>
-       </Col>
-     </Row>
-   </Form>
- </Drawer>
- </>
-)
+        <Box sx={{ bgcolor: '#fffde7', borderRadius: 2, p: 1, mb: 2 }}>
+          <Typography variant="body2" color="text.secondary">
+            You are missing out on opportunities to create an impact
+          </Typography>
+          <Button 
+            size="small" 
+            color="primary" 
+            sx={{ textTransform: 'none' }} 
+            onClick={() => {
+              handleClose(); 
+              openDrawer();
+            }}
+          >
+            Complete my profile
+          </Button>
+        </Box>
+
+        <MenuItem onClick={() => navigate("/activites")}>Activities</MenuItem>
+        <MenuItem onClick={handleClose}>Teams</MenuItem>
+        <MenuItem onClick={handleClose}>Levels</MenuItem>
+        <MenuItem onClick={handleClose}>Leaderboard</MenuItem>
+        <MenuItem onClick={handleClose}>Applied Activities</MenuItem>
+        <MenuItem onClick={handleClose}>Tasks</MenuItem>
+        <MenuItem onClick={handleClose}>Notifications</MenuItem>
+        <MenuItem onClick={handleClose}>My Transactions</MenuItem>
+        <MenuItem onClick={handleClose}>Support</MenuItem>
+        <MenuItem onClick={handleClose}>Settings</MenuItem>
+
+        <Divider sx={{ my: 1 }} />
+
+        <Typography variant="subtitle2" color="text.secondary" sx={{ pl: 1 }}>
+          Mentors
+        </Typography>
+        <MenuItem onClick={handleClose}>My Dashboard</MenuItem>
+      </Menu>
+    </Box>
+  );
 };
 
-export default App;
+export default Avatars;

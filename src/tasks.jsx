@@ -14,7 +14,6 @@ import {
   MenuItem,
   ToggleButtonGroup,
   ToggleButton,
-  Switch,
 } from "@mui/material";
 import {
   Dashboard,
@@ -32,11 +31,11 @@ import {
   ExpandMore,
   Search,
   ArrowDropDown,
-  Share,
+  
 } from "@mui/icons-material";
-import masterCodeImage from "./assets./master_code_image"; // Navigation logo
+import logo from "./assets/Logo.png"; // Navigation logo
 
-import taskImage from "./assets./taskImage.png"; // Navigation logo
+import taskImage from "./assets/taskimage.png"; // Navigation logo
 
 const menuItems = [
   { text: "Activities", icon: <Dashboard /> },
@@ -55,7 +54,6 @@ const menuItems = [
 export default function ThreeCardsLayout() {
   const [sortAnchorEl, setSortAnchorEl] = useState(null);
   const [filter, setFilter] = useState("All");
-  const [emailNotifications, setEmailNotifications] = useState(true);
 
   const handleSortClick = (event) => {
     setSortAnchorEl(event.currentTarget);
@@ -76,7 +74,7 @@ export default function ThreeCardsLayout() {
       <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
         <CardContent sx={{ display: "flex", alignItems: "center", gap: 1, width: "100%", color: "black", p: 0, "&:last-child": { p: 0 } }}>
         
-          <img src={masterCodeImage} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
+          <img src={logo} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
           
           <TextField variant="outlined" placeholder="Search..." size="small" sx={{ width: 250, ml: 2 }} />
           

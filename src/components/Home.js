@@ -5,15 +5,15 @@ import Hero from "./Hero";
 import FeatureCard from "./FeatureCard";
 import CategoryCard from "./CategoryCard";
 
-import intenship from "./intenship.png";
-import mentors from "./mentors.png";
-import jobs from "./jobs.png";
-import more from "./more.png";
-import awades from "./awades.png";
-import aechives from "./aechives.png";
-import student from "./student.png";
-import compani from "./compani.png";
-import colleges from "./colleges.png";
+import intenship from "./assets/intenship.png";
+import mentors from "./assets/mentors.png";
+import jobs from "./assets/jobs.png";
+import more from "./assets/more.png";
+import awades from "./assets/awades.png";
+import aechives from "./assets/aechives.png";
+import student from "./assets/student.png";
+import compani from "./assets/compani.png";
+import colleges from "./assets/colleges.png";
 
 const Home = () => {
   const features = [

@@ -9,9 +9,13 @@
   import SignUpPlanCarrerSelection from './SignUpPlanCarrerSelection';
   import HomePageWithLogin from './HomePageWithLogin';
   import Internship  from './Internship';
+  import Activites from './activities'
+  import Tasks from './Tasks'
   import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   function App() {
     const[loading,setLoading]=useState(true);
+
+
     return (
       <>
       <Router>
@@ -24,6 +28,8 @@
         <Route path="/otp" element={<OTPVerification />} />
         <Route path="/SUPC" element={<SignUpPlanCarrer />} />
         <Route path="/SUPCS" element={<SignUpPlanCarrerSelection />} />
+        <Route path="/activites" element={<Activites />} />
+        <Route path="/tasks" element={<Tasks />} />
 
       </Routes>
     </Router>
