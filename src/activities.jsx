@@ -36,7 +36,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Avatar from "./components/Avatars"
 import {
   AccountCircle as AccountCircleIcon,
-  Event as EventIcon,
+  // Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,
   EmojiEvents as LeaderboardIcon,
@@ -137,10 +137,10 @@ export default function ThreeCardsLayout() {
             <Typography variant="body2" color="textSecondary">user@example.com</Typography>
             <Divider sx={{ my: 1, width: "100%" }} />
             <Stack spacing={2}>
-                    <MenuItem onClick={() => navigate("/activites")}><AccountCircleIcon /> Activities</MenuItem>
-                    <MenuItem onClick={() => navigate("/teams")}><TeamIcon /> Teams</MenuItem>
-                    <MenuItem onClick={() => navigate("/levels")}><LevelsIcon />Levels</MenuItem>
-                    <MenuItem onClick={() => navigate("/leaderboard")}><LeaderboardIcon />Leaderboard</MenuItem>
+                    <MenuItem onClick={() => navigate("/activites")}><AccountCircleIcon />  Activities</MenuItem>
+                    <MenuItem onClick={() => navigate("/teams")}><TeamIcon />  Teams</MenuItem>
+                    <MenuItem onClick={() => navigate("/levels")}><LevelsIcon />  Levels</MenuItem>
+                    <MenuItem onClick={() => navigate("/leaderboard")}><LeaderboardIcon />  Leaderboard</MenuItem>
                     <MenuItem onClick={() => navigate("/applied")}><AppliedActivitiesIcon />Applied Activities</MenuItem>
                     <MenuItem onClick={() => navigate("/tasks")}><TasksIcon />Tasks</MenuItem>
                     <MenuItem onClick={() => navigate("/notifications")}><NotificationsIcon />Notifications</MenuItem>

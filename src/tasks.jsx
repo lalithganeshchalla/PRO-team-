@@ -16,15 +16,7 @@ import {
   ToggleButton,
 } from "@mui/material";
 import {
-  Dashboard,
-  People,
-  EmojiEvents,
-  Task,
   Notifications,
-  Payment,
-  Support,
-  Settings,
-  ExitToApp,
   Language,
   Brightness4,
   Add,
@@ -34,22 +26,23 @@ import {
   
 } from "@mui/icons-material";
 import logo from "./assets/Logo.png"; // Navigation logo
-
+import {
+  AccountCircle as AccountCircleIcon,
+  // Event as EventIcon,
+  Group as TeamIcon,
+  SignalCellularAlt as LevelsIcon,
+  EmojiEvents as LeaderboardIcon,
+  Work as AppliedActivitiesIcon,
+  Assignment as TasksIcon,
+  Notifications as NotificationsIcon,
+  Payment as TransactionsIcon,
+  Support as SupportIcon,
+  Settings as SettingsIcon,
+  Logout as LogoutIcon
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom" 
 import taskImage from "./assets/taskimage.png"; // Navigation logo
 
-const menuItems = [
-  { text: "Activities", icon: <Dashboard /> },
-  { text: "Teams", icon: <People /> },
-  { text: "Levels", icon: <EmojiEvents /> },
-  { text: "Leaderboard", icon: <EmojiEvents /> },
-  { text: "Applied Activities", icon: <Task /> },
-  { text: "Tasks", icon: <Task /> },
-  { text: "Notifications", icon: <Notifications /> },
-  { text: "Transactions", icon: <Payment /> },
-  { text: "Support", icon: <Support /> },
-  { text: "Settings", icon: <Settings /> },
-  { text: "Logout", icon: <ExitToApp />, textColor: "red" },
-];
 
 export default function ThreeCardsLayout() {
   const [sortAnchorEl, setSortAnchorEl] = useState(null);
@@ -68,7 +61,7 @@ export default function ThreeCardsLayout() {
       setFilter(newFilter);
     }
   };
-
+  const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 0.6, p: 2 }}>
       <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
@@ -105,13 +98,17 @@ export default function ThreeCardsLayout() {
             <Typography variant="body2" color="textSecondary">user@example.com</Typography>
             <Divider sx={{ my: 1, width: "100%" }} />
             <Stack spacing={2}>
-              {menuItems.map((item, index) => (
-                <Box key={index} sx={{ display: "flex", alignItems: "center", gap: 1, pl: 1,            bgcolor: item.text === "Tasks" ? "lightgreen" : "transparent" 
-                }}>
-                  {item.icon}
-                  <Typography variant="body1" sx={{ color: item.textColor || "black" }}>{item.text}</Typography>
-                </Box>
-              ))}
+              <MenuItem onClick={() => navigate("/activites")}><AccountCircleIcon />  Activities</MenuItem>
+                                  <MenuItem onClick={() => navigate("/teams")}><TeamIcon />  Teams</MenuItem>
+                                  <MenuItem onClick={() => navigate("/levels")}><LevelsIcon />  Levels</MenuItem>
+                                  <MenuItem onClick={() => navigate("/leaderboard")}><LeaderboardIcon />  Leaderboard</MenuItem>
+                                  <MenuItem onClick={() => navigate("/applied")}><AppliedActivitiesIcon />Applied Activities</MenuItem>
+                                  <MenuItem onClick={() => navigate("/tasks")}><TasksIcon />Tasks</MenuItem>
+                                  <MenuItem onClick={() => navigate("/notifications")}><NotificationsIcon />Notifications</MenuItem>
+                                  <MenuItem onClick={() => navigate("/transactions")}><TransactionsIcon />My Transactions</MenuItem>
+                                  <MenuItem onClick={() => navigate("/support")}><SupportIcon />Support</MenuItem>
+                                  <MenuItem onClick={() => navigate("/settings")}><SettingsIcon />Settings</MenuItem>
+                                  <MenuItem onClick={() => navigate("/logout")}><LogoutIcon />Logout</MenuItem>
             </Stack>
           </CardContent>
         </Card>
