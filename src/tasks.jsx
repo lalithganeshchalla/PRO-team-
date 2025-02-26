@@ -6,7 +6,6 @@ import {
   Typography,
   Stack,
   Divider,
-  Avatar,
   TextField,
   IconButton,
   Button,
@@ -14,7 +13,14 @@ import {
   MenuItem,
   ToggleButtonGroup,
   ToggleButton,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+
 } from "@mui/material";
+import Avatar from './components/Avatars';
+
 import {
   Notifications,
   Language,
@@ -23,12 +29,13 @@ import {
   ExpandMore,
   Search,
   ArrowDropDown,
+
   
 } from "@mui/icons-material";
 import logo from "./assets/Logo.png"; // Navigation logo
 import {
   AccountCircle as AccountCircleIcon,
-  // Event as EventIcon,
+  Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,
   EmojiEvents as LeaderboardIcon,
@@ -42,6 +49,17 @@ import {
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom" 
 import taskImage from "./assets/taskimage.png"; // Navigation logo
+import Buttons from "./components/ButtonDropDown";
+import LanguageDropDown from "./components/LanguageDropDown";
+import ProfileUpdation from "./components/ProfileUpdation";
+import {
+  AppBar,
+  Toolbar,
+  InputBase,
+} from "@mui/material";
+import { 
+  Search as SearchIcon
+} from "@mui/icons-material";
 
 
 export default function ThreeCardsLayout() {
@@ -62,6 +80,36 @@ export default function ThreeCardsLayout() {
     }
   };
   const navigate = useNavigate();
+  const [selected, setSelected] = useState("Tasks");
+
+const handleSelect = (item) => {
+  setSelected(item.text);
+  navigate(item.path);
+};
+
+  const menuItems = [
+      { text: "Activities", icon: <EventIcon />, path: "/activities" },
+      { text: "Team", icon: <TeamIcon />, path: "/teams" },
+      { text: "Levels", icon: <LevelsIcon />, path: "/levels" },
+      { text: "Leaderboard", icon: <LeaderboardIcon />, path: "/leaderboard" },
+      { text: "Applied Activities", icon: <AppliedActivitiesIcon />, path: "/applied" },
+      { text: "Tasks", icon: <TasksIcon />, path: "/tasks" },
+      { text: "Notifications", icon: <NotificationsIcon />, path: "/notifications" },
+      { text: "Transactions", icon: <TransactionsIcon />, path: "/transactions" },
+      { text: "Support", icon: <SupportIcon />, path: "/support" },
+      { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
+      { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
+    ];
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+const openDrawer = () => {
+  setIsDrawerOpen(true);
+};
+
+const closeDrawer = () => {
+  setIsDrawerOpen(false);
+};
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 0.6, p: 2 }}>
       <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
@@ -89,30 +137,52 @@ export default function ThreeCardsLayout() {
       
       <Box sx={{ display: "flex", flexGrow: 1, gap: 2 }}>
         
-        <Card sx={{ width: 200, height: "90%", display: "flex", flexDirection: "column", alignItems: "center", p: 2, borderRadius: 0 }}>
-          <CardContent sx={{ width: "100%" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
-              <Avatar />
-              <Typography variant="h6">User Name</Typography>
+      <List>
+        {menuItems.map((item, index) => (
+          <ListItemButton 
+            key={index} 
+            onClick={() => handleSelect(item)}
+            sx={{ 
+              borderRadius: "10px", 
+              marginBottom: "8px", 
+              backgroundColor: selected === item.text ? "#66ff66" : "transparent",
+              "&:hover": { backgroundColor: selected === item.text ? "#50cc50" : "#f0f0f0" }
+            }}
+          >
+            <ListItemIcon sx={{ color: item.color === "red" ? "red" : "#000" }}>
+              {item.icon}
+            </ListItemIcon>
+            <ListItemText 
+              primary={item.text} 
+              sx={{ 
+                color: selected === item.text ? "#000" : (item.color === "red" ? "red" : "#000"), 
+                fontWeight: selected === item.text ? "bold" : "normal" 
+              }} 
+            />
+          </ListItemButton>
+        ))}
+      </List>
+      <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
+              <SearchIcon />
+              <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
-            <Typography variant="body2" color="textSecondary">user@example.com</Typography>
-            <Divider sx={{ my: 1, width: "100%" }} />
-            <Stack spacing={2}>
-              <MenuItem onClick={() => navigate("/activites")}><AccountCircleIcon />  Activities</MenuItem>
-                                  <MenuItem onClick={() => navigate("/teams")}><TeamIcon />  Teams</MenuItem>
-                                  <MenuItem onClick={() => navigate("/levels")}><LevelsIcon />  Levels</MenuItem>
-                                  <MenuItem onClick={() => navigate("/leaderboard")}><LeaderboardIcon />  Leaderboard</MenuItem>
-                                  <MenuItem onClick={() => navigate("/applied")}><AppliedActivitiesIcon />Applied Activities</MenuItem>
-                                  <MenuItem onClick={() => navigate("/tasks")}><TasksIcon />Tasks</MenuItem>
-                                  <MenuItem onClick={() => navigate("/notifications")}><NotificationsIcon />Notifications</MenuItem>
-                                  <MenuItem onClick={() => navigate("/transactions")}><TransactionsIcon />My Transactions</MenuItem>
-                                  <MenuItem onClick={() => navigate("/support")}><SupportIcon />Support</MenuItem>
-                                  <MenuItem onClick={() => navigate("/settings")}><SettingsIcon />Settings</MenuItem>
-                                  <MenuItem onClick={() => navigate("/logout")}><LogoutIcon />Logout</MenuItem>
-            </Stack>
-          </CardContent>
-        </Card>
-
+            <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/oractice")}>Practice</Button>
+            <Buttons />
+            <LanguageDropDown />
+            <Avatar openDrawer={openDrawer} />
+            <ProfileUpdation open={isDrawerOpen} onClose={closeDrawer} />
+            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
     
         <Card sx={{ flexGrow: 1, height: "90%", display: "flex", flexDirection: "column", p: 2 }}>
           <CardContent sx={{ color: "black" }}>

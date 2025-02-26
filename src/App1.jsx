@@ -17,7 +17,7 @@ import aechives from "./assets/aechives.png";
 import student from "./assets/student.png";
 import compani from "./assets/compani.png";
 import colleges from "./assets/colleges.png";
-import profileImage from './Avatar/display.png';
+import profileImage from './assets/display.png';
 
 import './App.css';
 

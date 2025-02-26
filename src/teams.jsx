@@ -1,138 +1,147 @@
 import React, { useState } from "react";
+import ProfileUpdate from "./components/ProfileUpdation";
 import {
   Box,
   Card,
   CardContent,
   Typography,
   Stack,
-  Divider,
-  Avatar,
-  TextField,
   IconButton,
   Button,
-  Menu,
-  MenuItem,
-  ToggleButtonGroup,
-  ToggleButton,
-  Switch,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  List,
+  AppBar,
+  Toolbar,
+  InputBase,
 } from "@mui/material";
+import Avatar from "./components/Avatars";
 import {
-  Dashboard,
-  People,
-  EmojiEvents,
-  Task,
-  Notifications,
-  Payment,
-  Support,
-  Settings,
-  ExitToApp,
-  Language,
-  Brightness4,
-  Add,
-  ExpandMore,
-  Search,
-  ArrowDropDown,
-  Share,
+  Search as SearchIcon,
+  AccountCircle as AccountCircleIcon,
+  Event as EventIcon,
+  Group as TeamIcon,
+  SignalCellularAlt as LevelsIcon,
+  EmojiEvents as LeaderboardIcon,
+  Work as AppliedActivitiesIcon,
+  Assignment as TasksIcon,
+  Notifications as NotificationsIcon,
+  Payment as TransactionsIcon,
+  Support as SupportIcon,
+  Settings as SettingsIcon,
+  Logout as LogoutIcon,
+  Message as MessageIcon,
+  AttachFile as AttachFileIcon,
+  Image as ImageIcon,
+  CalendarToday as CalendarTodayIcon,
 } from "@mui/icons-material";
-import masterCodeImage from "./assets./master_code_image.png"; 
-
-
-import MessageIcon from '@mui/icons-material/Message';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import ImageIcon from '@mui/icons-material/Image';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-
-
-const menuItems = [
-  { text: "Activities", icon: <Dashboard /> },
-  { text: "Teams", icon: <People /> },
-  { text: "Levels", icon: <EmojiEvents /> },
-  { text: "Leaderboard", icon: <EmojiEvents /> },
-  { text: "Applied Activities", icon: <Task /> },
-  { text: "Tasks", icon: <Task /> },
-  { text: "Notifications", icon: <Notifications /> },
-  { text: "Transactions", icon: <Payment /> },
-  { text: "Support", icon: <Support /> },
-  { text: "Settings", icon: <Settings /> },
-  { text: "Logout", icon: <ExitToApp />, textColor: "red" },
-];
+import { useNavigate } from "react-router-dom";
+import logo from "./assets/Logo.png";
+import Buttons from "./components/ButtonDropDown";
+import LanguageDropDown from "./components/LanguageDropDown";
+import ProfileUpdation from "./components/ProfileUpdation";
 
 export default function ThreeCardsLayout() {
-  const [sortAnchorEl, setSortAnchorEl] = useState(null);
-  const [filter, setFilter] = useState("All");
-  const [emailNotifications, setEmailNotifications] = useState(true);
+  const navigate = useNavigate();
+  const [] = useState(false);
+  const [] = useState("default-profile-image-url");
+  const [selected, setSelected] = useState("Team");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleSortClick = (event) => {
-    setSortAnchorEl(event.currentTarget);
-  };
 
-  const handleSortClose = () => {
-    setSortAnchorEl(null);
-  };
+  const menuItems = [
+    { text: "Activities", icon: <EventIcon />, path: "/activities" },
+    { text: "Team", icon: <TeamIcon />, path: "/teams" },
+    { text: "Levels", icon: <LevelsIcon />, path: "/levels" },
+    { text: "Leaderboard", icon: <LeaderboardIcon />, path: "/leaderboard" },
+    { text: "Applied Activities", icon: <AppliedActivitiesIcon />, path: "/applied" },
+    { text: "Tasks", icon: <TasksIcon />, path: "/tasks" },
+    { text: "Notifications", icon: <NotificationsIcon />, path: "/notifications" },
+    { text: "Transactions", icon: <TransactionsIcon />, path: "/transactions" },
+    { text: "Support", icon: <SupportIcon />, path: "/support" },
+    { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
+    { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" },
+  ];
 
-  const handleFilterChange = (event, newFilter) => {
-    if (newFilter !== null) {
-      setFilter(newFilter);
-    }
+  const handleSelect = (item) => {
+    setSelected(item.text);
+    navigate(item.path);
   };
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh", gap: 0.6, p: 2 }}>
-      <Card sx={{ width: "100%", height: 80, display: "flex", alignItems: "center", px: 2, mb: 2, justifyContent: "space-between" }}>
-        <CardContent sx={{ display: "flex", alignItems: "center", gap: 1, width: "100%", color: "black", p: 0, "&:last-child": { p: 0 } }}>
-          {/* Logo */}
-          <img src={masterCodeImage} alt="Logo" style={{ maxWidth: "150px", maxHeight: "20", marginRight: "15px" }} />
-          {/* Search Bar */}
-          <TextField variant="outlined" placeholder="Search..." size="small" sx={{ width: 250, ml: 2 }} />
-          {/* Navigation Items */}
-          <Stack direction="row" spacing={2} alignItems="center" sx={{ flexGrow: 1, justifyContent: "flex-end" }}>
-            {"Internships Jobs Competitions Mentors Practice".split(" ").map((item, index) => (
-              <Typography key={index} variant="body1" color="black">{item}</Typography>
-            ))}
-            <Typography variant="body1" color="black">More</Typography>
-            <IconButton><ExpandMore /></IconButton>
-            <IconButton><Language /></IconButton>
-            <IconButton><Brightness4 /></IconButton>
-            <IconButton><Notifications /></IconButton>
-            <Avatar />
-            <Button variant="contained" startIcon={<Add />}>Host</Button>
-          </Stack>
-        </CardContent>
-      </Card>
+<Box sx={{ display: "flex" }}>
+  <Box
+    sx={{
+      width: "250px",
+      height: "100vh",
+      borderRight: "1px solid #ccc",
+      backgroundColor: "#fff",
+      padding: "20px",
+    }}
+  >
+    <List sx={{ paddingTop: 10 }}>
+      {menuItems.map((item, index) => (
+        <ListItemButton
+          key={index}
+          onClick={() => handleSelect(item)}
+          sx={{
+            borderRadius: "10px",
+            marginBottom: "8px",
+            backgroundColor: selected === item.text ? "#66ff66" : "transparent",
+            "&:hover": {
+              backgroundColor: selected === item.text ? "#50cc50" : "#f0f0f0"
+            }
+          }}
+        >
+          <ListItemIcon sx={{ color: item.color === "red" ? "red" : "#000" }}>
+            {item.icon}
+          </ListItemIcon>
+          <ListItemText
+            primary={item.text}
+            sx={{
+              color:
+                selected === item.text
+                  ? "#000"
+                  : item.color === "red"
+                  ? "red"
+                  : "#000",
+              fontWeight: selected === item.text ? "bold" : "normal"
+            }}
+          />
+        </ListItemButton>
+      ))}
+    </List>
+  </Box>
 
-      {/* Main Content */}
-      <Box sx={{ display: "flex", flexGrow: 1, gap: 2 }}>
-        {/* Menu Card */}
-        <Card sx={{ width: 200, height: "90%", display: "flex", flexDirection: "column", alignItems: "center", p: 2, borderRadius: 0 }}>
-          <CardContent sx={{ width: "100%" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
-              <Avatar />
-              <Typography variant="h6">User Name</Typography>
+  <Box sx={{ flexGrow: 2, overflow: "auto" }}>
+  <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
+                <SearchIcon />
+                <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
+              </Box>
+              <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
+              <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
+              <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
+              <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
+              <Button sx={{ color: "#000" }} onClick={() => navigate("/practice")}>Practice</Button>
+              <Buttons />
+              <LanguageDropDown />
+              <Avatar onClick={openDrawer} />
+              <ProfileUpdate open={isDrawerOpen} onClose={closeDrawer} />
+              <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
             </Box>
-            <Typography variant="body2" color="textSecondary">user@example.com</Typography>
-            <Divider sx={{ my: 1, width: "100%" }} />
-            <Stack spacing={2}>
-              {menuItems.map((item, index) => (
-                <Box key={index} sx={{ display: "flex", alignItems: "center", gap: 1, pl: 1,            bgcolor: item.text === "Teams" ? "lightgreen" : "transparent" 
-                }}>
-                  {item.icon}
-                  <Typography variant="body1" sx={{ color: item.textColor || "black" }}>{item.text}</Typography>
-                </Box>
-              ))}
-            </Stack>
-          </CardContent>
-        </Card>
+          </Toolbar>
+        </AppBar>
 
-        {/* Content Card */}
-        <Card sx={{ flexGrow: 1, height: "90%", display: "flex", flexDirection: "column", p: 2 }}>
-  <CardContent sx={{ color: "black", display: "flex", height: "100%" }}>
-    {/* Left Side (70%) */}
-    <Box sx={{ flex: 7, display: "flex", flexDirection: "column" }}>
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>Group Discussions</Typography>
-      {/* Add content here */}
-       {/* Card 1 */}
-    <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
-      <CardContent>
+    <Box sx={{ mt: 10, p: 2 }}>
+      <Typography variant="h6" fontWeight="bold">Group Discussions</Typography>
+      <Card sx={{ mt: 2, p: 2 }}>
         <Stack direction="row" spacing={1} alignItems="center">
           <Avatar />
           <Typography variant="body1">Shamsinga Roy</Typography>
@@ -142,9 +151,7 @@ export default function ThreeCardsLayout() {
         </Typography>
         <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
           <Stack direction="row" spacing={0.5} alignItems="center">
-            <IconButton>
-              <MessageIcon />
-            </IconButton>
+            <IconButton><MessageIcon /></IconButton>
             <Typography variant="body2">4 Replies</Typography>
           </Stack>
           <Stack direction="row" spacing={0.5} alignItems="center">
@@ -154,77 +161,31 @@ export default function ThreeCardsLayout() {
             <Typography variant="body2">2 Files</Typography>
           </Stack>
         </Stack>
-      </CardContent>
-    </Card>
-
-
-    {/* Card 3 (with Start a Discussion feature) */}
-    <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
-      <CardContent>
-        <Stack direction="row" spacing={2} alignItems="center">
-          <Avatar />
-          
-        </Stack>
-        <Box sx={{ mt: 2, display: "flex", alignItems: "center", border: "1px solid #ccc",backgroundColor:"#E0FFDE" , p: 1 }}>
-          <Typography variant="body2" sx={{ flex: 1 }}>
-            Start a discussion...
-          </Typography>
-        </Box>
-        <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
-          <IconButton>
-            <ImageIcon />
-          </IconButton>
-          <IconButton>
-            <AttachFileIcon />
-          </IconButton>
-        </Stack>
-      </CardContent>
-    </Card>
-  
-    </Box>
-
-    {/* Vertical Divider */}
-    <Divider orientation="vertical" sx={{ height: "100%", margin: "0 10px" }} />
-
-    {/* Right Side (30%) */}
-    <Box sx={{ flex: 3, display: "flex", flexDirection: "column" }}>
-      {/* Add content here for the right side */}
-
-      <Typography variant="h6" fontWeight="bold" color="black">Team Members</Typography>
-      <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 1 }}>
-          <Avatar />
-          <Typography variant="body1">Emma Wilson</Typography>
-        </Box>
-        <Typography variant="body2" color="textSecondary">Developer</Typography>
-        <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 1 }}>
-          <Avatar />
-          <Typography variant="body1">James Chen</Typography>
-        </Box>
-        <Typography variant="body2" color="textSecondary">Designer</Typography>
+      </Card>
       
-        <Typography variant="h6" fontWeight="bold" color="black">Upcoming Events</Typography>
-        <Card sx={{ display: "flex", flexDirection: "column",backgroundColor:"#E0FFDE" }}>
-        <CardContent sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <IconButton>
-              <CalendarTodayIcon /> {/* Calendar Icon */}
-            </IconButton>
-            <Typography variant="body1">Team Sync Meeting</Typography>
+      <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
+        <CardContent>
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Avatar />
           </Stack>
-          <Typography variant="body2" color="textSecondary">Today, 2:00 P.M</Typography>
-          <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
-            <Avatar />
-            <Avatar />
-            <Typography variant="body2">+3 more</Typography>
+          <Box sx={{ mt: 2, display: "flex", alignItems: "center", border: "1px solid #ccc",backgroundColor:"#E0FFDE" , p: 1, borderRadius: 5 }}>
+            <Typography variant="body2" sx={{ flex: 1 }}>
+              Start a discussion...
+            </Typography>
+          </Box>
+          <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
+            <IconButton>
+              <ImageIcon />
+            </IconButton>
+            <IconButton>
+              <AttachFileIcon />
+            </IconButton>
           </Stack>
         </CardContent>
       </Card>
     </Box>
-    
-  </CardContent>
-</Card>
-
-      </Box>
-    </Box>
+  </Box>
+</Box>
+   
   );
 }

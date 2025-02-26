@@ -68,16 +68,17 @@ const Avatars = ({ openDrawer }) => {
           </Button>
         </Box>
 
-        <MenuItem onClick={() => navigate("/activites")}>Activities</MenuItem>
-        <MenuItem onClick={handleClose}>Teams</MenuItem>
-        <MenuItem onClick={handleClose}>Levels</MenuItem>
-        <MenuItem onClick={handleClose}>Leaderboard</MenuItem>
-        <MenuItem onClick={handleClose}>Applied Activities</MenuItem>
-        <MenuItem onClick={handleClose}>Tasks</MenuItem>
-        <MenuItem onClick={handleClose}>Notifications</MenuItem>
-        <MenuItem onClick={handleClose}>My Transactions</MenuItem>
-        <MenuItem onClick={handleClose}>Support</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <MenuItem onClick={() => navigate("/activities")}>Activities</MenuItem>
+        <MenuItem onClick={() => navigate("/teams")}>Teams</MenuItem>
+        <MenuItem onClick={() => navigate("/levels")}>Levels</MenuItem>
+        <MenuItem onClick={() => navigate("/leaderboard")}>Leaderboard</MenuItem>
+        <MenuItem onClick={() => navigate("/appliesactivites")}>Applied Activities</MenuItem>
+        <MenuItem onClick={() => navigate("/tasks")}>Tasks</MenuItem>
+        <MenuItem onClick={() => navigate("/notifications")}>Notifications</MenuItem>
+        <MenuItem onClick={() => navigate("/transactions")}>My Transactions</MenuItem>
+        <MenuItem onClick={() => navigate("/supports")}>Support</MenuItem>
+        <MenuItem onClick={() => navigate("/settings")}>Settings</MenuItem>
+        <MenuItem sx={{ color: "red" }} onClick={() => navigate("/logout")}>Logout</MenuItem>
 
         <Divider sx={{ my: 1 }} />
 

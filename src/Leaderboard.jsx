@@ -1,16 +1,25 @@
 import React from 'react';
+import { useState } from 'react';
 import { Box, AppBar, Toolbar, InputBase, Button, List, ListItemButton, ListItemIcon, ListItemText, Card, Typography, Grid } from '@mui/material';
 import { Search as SearchIcon, EmojiEvents as LeaderboardIcon, Event as EventIcon, Group as TeamIcon, SignalCellularAlt as LevelsIcon, Work as AppliedActivitiesIcon, Assignment as TasksIcon, Notifications as NotificationsIcon, Payment as TransactionsIcon, Support as SupportIcon, Settings as SettingsIcon, Logout as LogoutIcon } from '@mui/icons-material';
-import logo from '../assets/Logo.png';
-import Buttons from './ButtonDropDown';
-import LanguageDropDown from './LanguageDropDown';
-import ProfileUpdate from './ProfileUpdation';
-import { useState } from 'react';
+import logo from './assets/Logo.png';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Avatar from '../components/Avatars';
+import Buttons from './components/ButtonDropDown';
+import LanguageDropDown from './components/LanguageDropDown';
+import ProfileUpdate from './components/ProfileUpdation';
+import Avatar from './components/Avatars';
+
 const Leaderboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const openDrawer = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
   const menuItems = [
     { text: "Activities", icon: <EventIcon />, path: "/activities" },
     { text: "Teams", icon: <TeamIcon />, path: "/teams" },
@@ -24,36 +33,30 @@ const Leaderboard = () => {
     { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
     { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
   ];
-const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const closeDrawer = () => {
-      setIsDrawerOpen(false);
-    };
-    const openDrawer = () => {
-      setIsDrawerOpen(true);
-    };
+
   return (
     <Box sx={{ display: 'flex' }}>
-       <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
-          <Toolbar sx={{ display: "flex" }}>
-            <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
-            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
-              <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
-                <SearchIcon />
-                <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
-              </Box>
-              <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
-              <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
-              <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
-              <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
-              <Button sx={{ color: "#000" }} onClick={() => navigate("/practice")}>Practice</Button>
-              <Buttons />
-              <LanguageDropDown />
-              <Avatar onClick={openDrawer} />
-              <ProfileUpdate open={isDrawerOpen} onClose={closeDrawer} />
-              <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+      <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
+        <Toolbar sx={{ display: "flex" }}>
+          <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
+          <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", background: "#f5f5f5", padding: "5px 10px", borderRadius: "20px", color: "#b5b5b5" }}>
+              <SearchIcon />
+              <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
-          </Toolbar>
-        </AppBar>
+            <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/practice")}>Practice</Button>
+            <Buttons />
+            <LanguageDropDown />
+            <Avatar onClick={openDrawer} />
+            <ProfileUpdate open={isDrawerOpen} onClose={closeDrawer} />
+            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
       <Box sx={{ width: '250px', padding: '20px', backgroundColor: '#fff', height: '100vh' }}>
         <List>
           {menuItems.map((item, index) => (

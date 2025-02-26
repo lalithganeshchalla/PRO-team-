@@ -59,8 +59,8 @@ function App() {
     const selectedInternship = internships.find((item) => item.id === selectedId);
 
     return (
-        <Box sx={{ backgroundColor: '#f5f5f5', minHeight: '100vh', p: 2 }}>
-           <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
+        <Box sx={{ backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
+           <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
           <Toolbar sx={{ display: "flex" }}>
             <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
             <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
@@ -68,19 +68,19 @@ function App() {
               <SearchIcon />
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 ,fontSize: "12px" }} />
             </Box>
-            <Button sx={{ color: "#fff" ,backgroundColor:"#9dff8a" ,width:"150px"}} onClick={() => navigate("/internship")}>Internships</Button>
-            <Button sx={{ color: "#000" }}>Jobs</Button>
-            <Button sx={{ color: "#000" }}>Competitions</Button>
-            <Button sx={{ color: "#000" }}>Mentors</Button>
-            <Button sx={{ color: "#000" }}>Practice</Button>
+            <Button sx={{ color: "#fff" ,backgroundColor:"#9dff8a" ,width:"150px",fontWeight:"700"}} onClick={() => navigate("/internship")}>Internships</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/jobs")}>Jobs</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/competitions")}>Competitions</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/mentors")}>Mentors</Button>
+            <Button sx={{ color: "#000" }} onClick={() => navigate("/practice")}>Practice</Button>
             <Buttons />
             <LanguageDropDown />
             <Avatar />
-            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            <Button variant="outlined" sx={{ borderRadius: "25px" }} onClick={() => navigate("/host")}>Host</Button>
             </Box>
           </Toolbar>
         </AppBar>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ pt: 12 }}>
                 <Grid item xs={12} md={4}>
                     {internships.map((internship) => (
                         <InternshipCard

@@ -29,7 +29,7 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <Box>
-        <AppBar position="static" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
+        <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%" }}>
           <Toolbar sx={{ display: "flex" }}>
             <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
             <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
@@ -38,21 +38,21 @@ const Home = () => {
               <InputBase placeholder="Search Hackathons" sx={{ marginLeft: 1 }} />
             </Box>
             <Button sx={{ color: "#000"}} onClick={() => navigate("/internship")}>Internships</Button>
-            <Button sx={{ color: "#000" }}>Jobs</Button>
-            <Button sx={{ color: "#000" }}>Competitions</Button>
-            <Button sx={{ color: "#000" }}>Mentors</Button>
-            <Button sx={{ color: "#000" }}>Practice</Button>
+            <Button sx={{ color: "#000" }}onClick={() => navigate("/jobs")}>Jobs</Button>
+            <Button sx={{ color: "#000" }}onClick={() => navigate("/competitions")}>Competitions</Button>
+            <Button sx={{ color: "#000" }}onClick={() => navigate("/mentors")}>Mentors</Button>
+            <Button sx={{ color: "#000" }}onClick={() => navigate("/practice")}>Practice</Button>
             <Buttons />
             <LanguageDropDown /> 
             <Avatar openDrawer={openDrawer} />
             <ProfileUpdation open={isDrawerOpen} onClose={closeDrawer} />
-            <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
+            <Button variant="outlined" sx={{ borderRadius: "25px" }} onClick={() => navigate("/host")}>Host</Button>
             </Box>
           </Toolbar>
         </AppBar>
 
         {/* Hero Section */}
-      <Container sx={{ display: "flex", alignItems: "center", marginTop: 5 }}>
+      <Container sx={{ display: "flex", alignItems: "center", marginTop: 12 }}>
       <img src={image1} alt="home" style={{ width: "200px" }} />
         <Box sx={{ textAlign: "left", marginLeft: 4 }}>
           <Typography variant="h4">

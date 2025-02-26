@@ -68,3 +68,113 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+ {/* Content Card */}
+        <Card sx={{ flexGrow: 1, height: "90%", display: "flex", flexDirection: "column", p: 2 }}>
+  <CardContent sx={{ color: "black", display: "flex", height: "100%" }}>
+    {/* Left Side (70%) */}
+    <Box sx={{ flex: 7, display: "flex", flexDirection: "column" }}>
+      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>Group Discussions</Typography>
+      {/* Add content here */}
+       {/* Card 1 */}
+    <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
+      <CardContent>
+      <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Avatar />
+          <Typography variant="body1">Shamsinga Roy</Typography>
+        </Stack>
+        
+        <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
+          Just finished the initial wireframes for the new dashboard. Would love to get everyone’s feedback!
+        </Typography>
+       
+        <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <IconButton>
+              <MessageIcon />
+            </IconButton>
+            <Typography variant="body2">4 Replies</Typography>
+          </Stack>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <IconButton>
+              <AttachFileIcon />
+            </IconButton>
+            <Typography variant="body2">2 Files</Typography>
+          </Stack>
+          
+        </Stack>
+        </Card>
+      </CardContent>
+      
+
+    </Card>
+
+
+    {/* Card 3 (with Start a Discussion feature) */}
+    <Card sx={{ display: "flex", flexDirection: "column", p: 2 }}>
+      <CardContent>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <Avatar />
+          
+        </Stack>
+        <Box sx={{ mt: 2, display: "flex", alignItems: "center", border: "1px solid #ccc",backgroundColor:"#E0FFDE" , p: 1, borderRadius: 5 }}>
+          <Typography variant="body2" sx={{ flex: 1 }}>
+            Start a discussion...
+          </Typography>
+        </Box>
+        <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
+          <IconButton>
+            <ImageIcon />
+          </IconButton>
+          <IconButton>
+            <AttachFileIcon />
+          </IconButton>
+        </Stack>
+      </CardContent>
+    </Card>
+  
+    </Box>
+
+    {/* Vertical Divider */}
+    <Divider orientation="vertical" sx={{ height: "100%", margin: "0 10px" }} />
+
+    {/* Right Side (30%) */}
+    <Box sx={{ flex: 3, display: "flex", flexDirection: "column" }}>
+      {/* Add content here for the right side */}
+
+      <Typography variant="h6" fontWeight="bold" color="black">Team Members</Typography>
+      <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 1 }}>
+          <Avatar />
+          <Typography variant="body1">Emma Wilson</Typography>
+        </Box>
+        <Typography variant="body2" color="textSecondary">Developer</Typography>
+        <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 1 }}>
+          <Avatar />
+          <Typography variant="body1">James Chen</Typography>
+        </Box>
+        <Typography variant="body2" color="textSecondary">Designer</Typography>
+      
+        <Typography variant="h6" fontWeight="bold" color="black">Upcoming Events</Typography>
+        <Card sx={{ display: "flex", flexDirection: "column",backgroundColor:"#E0FFDE" }}>
+        <CardContent sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <IconButton>
+              <CalendarTodayIcon /> {/* Calendar Icon */}
+            </IconButton>
+            <Typography variant="body1">Team Sync Meeting</Typography>
+          </Stack>
+          <Typography variant="body2" color="textSecondary">Today, 2:00 P.M</Typography>
+          <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+            <Avatar />
+            <Avatar />
+            <Typography variant="body2">+3 more</Typography>
+          </Stack>
+        </CardContent>
+      </Card>
+    </Box>
+    
+  </CardContent>
+</Card>

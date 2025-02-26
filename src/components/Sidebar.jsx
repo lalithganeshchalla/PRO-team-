@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { 
   Box, Avatar, Typography, Divider, List, ListItemButton, ListItemIcon, ListItemText 
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import {
   AccountCircle as AccountCircleIcon,
   Event as EventIcon,
@@ -16,42 +17,47 @@ import {
   Settings as SettingsIcon,
   Logout as LogoutIcon
 } from "@mui/icons-material";
-import profileImage from "./popup.png"; // Update with your image path
+import profileImage from "../assets/user.png";
 
-const Sidebar = ({ onSelect }) => {
+const Sidebar = () => {
+  const [selected, setSelected] = useState("Levels");
+  const navigate = useNavigate();
+
   const [imageError, setImageError] = useState(false);
-
   const handleImageError = () => setImageError(true);
 
   const user = { name: "Master Code", email: "Mastercode@example.com" };
 
-  // Menu items with icons
   const menuItems = [
-    { text: "Activities", icon: <EventIcon />},
-    { text: "Team", icon: <TeamIcon /> },
-    { text: "Levels", icon: <LevelsIcon /> },
-    { text: "Leaderboard", icon: <LeaderboardIcon /> },
-    { text: "Applied Activities", icon: <AppliedActivitiesIcon /> },
-    { text: "Tasks", icon: <TasksIcon /> },
-    { text: "Notifications", icon: <NotificationsIcon /> },
-    { text: "Transactions", icon: <TransactionsIcon /> },
-    { text: "Support", icon: <SupportIcon /> },
-    { text: "Settings", icon: <SettingsIcon /> },
-    { text: "Logout", icon: <LogoutIcon />, color: "red" } // Logout item marked with red color
+    { text: "Activities", icon: <EventIcon />, path: "/activities" },
+    { text: "Team", icon: <TeamIcon />, path: "/teams" },
+    { text: "Levels", icon: <LevelsIcon />, path: "/levels" },
+    { text: "Leaderboard", icon: <LeaderboardIcon />, path: "/leaderboard" },
+    { text: "Applied Activities", icon: <AppliedActivitiesIcon />, path: "/applied" },
+    { text: "Tasks", icon: <TasksIcon />, path: "/tasks" },
+    { text: "Notifications", icon: <NotificationsIcon />, path: "/notifications" },
+    { text: "Transactions", icon: <TransactionsIcon />, path: "/transactions" },
+    { text: "Support", icon: <SupportIcon />, path: "/support" },
+    { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
+    { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
   ];
+
+  const handleSelect = (item) => {
+    setSelected(item.text);
+    navigate(item.path);
+  };
 
   return (
     <Box sx={{ 
       width: "250px", 
       minHeight: "100vh", 
-      background: "#f5f5f5", 
+      background: "#fff", 
       padding: "20px", 
       display: "flex", 
       flexDirection: "column",
       boxShadow: "2px 0 5px rgba(0,0,0,0.1)"
     }}>
       
-      {/* Profile Section */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
         <Avatar 
           sx={{ bgcolor: "#66ff66", width: 50, height: 50 }} 
@@ -68,25 +74,27 @@ const Sidebar = ({ onSelect }) => {
 
       <Divider sx={{ marginBottom: 2 }} />
 
-      {/* Navigation Menu */}
       <List>
         {menuItems.map((item, index) => (
           <ListItemButton 
             key={index} 
-            onClick={() => onSelect(item.text)}
+            onClick={() => handleSelect(item)}
             sx={{ 
               borderRadius: "10px", 
               marginBottom: "8px", 
-              backgroundColor: item.text === "Levels" ? "#66ff66" : "transparent", // Green background only for Levels
-              "&:hover": { backgroundColor: item.text === "Levels" ? "#50cc50" : "#ddd" } // Slightly darker green on hover
+              backgroundColor: selected === item.text ? "#66ff66" : "transparent",
+              "&:hover": { backgroundColor: selected === item.text ? "#50cc50" : "#f0f0f0" }
             }}
           >
-            <ListItemIcon sx={{ color: item.color === "red" ? "red" : "#000" }}> {/* Red icon for Logout */}
+            <ListItemIcon sx={{ color: item.color === "red" ? "red" : "#000" }}>
               {item.icon}
             </ListItemIcon>
             <ListItemText 
               primary={item.text} 
-              sx={{ color: item.color === "red" ? "red" : "#000", fontWeight: item.color === "red" ? "bold" : "normal" }} // Red text for Logout
+              sx={{ 
+                color: selected === item.text ? "#000" : (item.color === "red" ? "red" : "#000"), 
+                fontWeight: selected === item.text ? "bold" : "normal" 
+              }} 
             />
           </ListItemButton>
         ))}

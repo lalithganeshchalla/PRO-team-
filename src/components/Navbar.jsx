@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Button, Box, InputBase, Menu, MenuItem, Avatar, IconButton, Divider } from "@mui/material";
 import { Search as SearchIcon, Notifications as NotificationsIcon, Add as AddIcon, AccountCircle as AccountCircleIcon, Public as PublicIcon, ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
 
-import profileImage from './assets/display.png'; // Ensure the image path is correct
+import profileImage from '../assets/display.png'; // Ensure the image path is correct
 
 const Navbar = () => {
   const [moreAnchorEl, setMoreAnchorEl] = useState(null);
