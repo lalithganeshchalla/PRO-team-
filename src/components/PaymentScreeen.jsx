@@ -19,7 +19,6 @@ import {
 } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import {
-  AccountCircle as AccountCircleIcon,
   Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,

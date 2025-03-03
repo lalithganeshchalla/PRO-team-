@@ -13,26 +13,31 @@
   import Tasks from './tasks';
   import Teams from './teams';
   import LeaderBoard from './Leaderboard';
-import Levels from './components/Dashboard';
+  import Levels from './components/Dashboard';
   import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Notification from './components/Notification';
-import AppliedActivities from './AppliedActivites';
-import ActivityDashboard from './ActivityDashboard';
-import Trancation from './Transcations';
-import Support from './Support';
-import Settings from './Settings';
-import Logout from './HomeDefault';
-import Jobs from './Jobs';
-import Host from './Host';
-import Practice from './Practice';
-import Mentor from './Mentor';
-import Competitions from './Competitions';
-import Pay from './components/PaymentScreeen';
-
+  import Notification from './components/Notification';
+  import AppliedActivities from './AppliedActivites';
+  import ActivityDashboard from './ActivityDashboard';
+  import Trancation from './Transcations';
+  import Support from './Support';
+  import Settings from './Settings';
+  import Logout from './HomeDefault';
+  import Jobs from './Jobs';
+  import Host from './Host';
+  import Practice from './Practice';
+  import Mentor from './Mentor';
+  import Competitions from './Competitions';
+  import Pay from './components/PaymentScreeen';
+import CandidateLogin from './CandidateLogin';
+import JudgeLogin from './JudgeLogin';
+import JudgeHomePage from './JudgeHomePage';
+import AssignmentScreen from "./AssignmentScreen";
+import Submissions from './Submissions';
+import ProgressMonitoring from './ProcessMonitaring';
+import JudgeNotification from './JudgeNotification';
+import JudgeReports from './JudgeReports';
   function App() {
     const[loading,setLoading]=useState(true);
-
-
     return (
       <>
       <Router>
@@ -63,11 +68,18 @@ import Pay from './components/PaymentScreeen';
         <Route path="/mentors" element={<Mentor />}/>
         <Route path="competitions" element={<Competitions />} />
         <Route path="/pay" element={<Pay />} />
-
+        <Route path="/candidatelogin" element={<CandidateLogin />} />
+        <Route path="/judgelogin" element={<JudgeLogin />} />
+        <Route path="/judgewithlogin" element={<JudgeHomePage />} />
+        <Route path="/home" element={<JudgeHomePage />} />
+        <Route path="/assignment" element={<AssignmentScreen />} />
+        <Route path="/submissionevaluation" element={<Submissions />} />
+        <Route path="/progressmonitoring" element={<ProgressMonitoring />} />
+        <Route path="/judgenotification" element={<JudgeNotification />} />
+        <Route path="/report" element={<JudgeReports />} />
       </Routes>
     </Router>
       </>
     );
   }
-
   export default App;

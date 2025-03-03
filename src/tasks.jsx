@@ -34,7 +34,6 @@ import {
 } from "@mui/icons-material";
 import logo from "./assets/Logo.png"; // Navigation logo
 import {
-  AccountCircle as AccountCircleIcon,
   Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,

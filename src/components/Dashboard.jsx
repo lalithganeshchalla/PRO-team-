@@ -13,13 +13,11 @@ import Mainbar from "./Mainbar";
 import ProfileUpdate from "./ProfileUpdation";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.png";
-
 import LevelSearch from "./LevelSearch"; // Import Leaderboard Component
 import Leaderboard from "../Leaderboard";
 const Dashboard = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Levels");
-  const [selectedSection, setSelectedSection] = useState(null); // Track which section is selected
-const [selected, setSelected] = useState("Levels");
+  const [ setSelectedCategory] = useState("Levels");
+  const [selectedSection, setSelectedSection] = useState(null);
   const handleSidebarSelect = (option) => {
     setSelectedSection(option); // Store selected option
   };
@@ -73,7 +71,6 @@ const navigate = useNavigate();
             borderRadius: "10px",
             padding: 1,
             backgroundColor: "white",
-            boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
           }}
         >
           {/* Render Sections Based on Sidebar Selection */}

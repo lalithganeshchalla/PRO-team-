@@ -6,7 +6,6 @@ import {
   ListItemIcon, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Search, ArrowDropDown, Share } from "@mui/icons-material";
-
 import logo from "./assets/Logo.png";
 import profileImage from "./assets/user.png";
 import SearchIcon from "@mui/icons-material/Search";
@@ -27,9 +26,7 @@ import {
   Support as SupportIcon,
   Settings as SettingsIcon,
   Logout as LogoutIcon,
-  
 } from "@mui/icons-material";
-
 export default function ThreeCardsLayout() {
   const [sortAnchorEl, setSortAnchorEl] = useState(null);
   const [filter, setFilter] = useState("All");
@@ -37,18 +34,12 @@ export default function ThreeCardsLayout() {
   const [selected, setSelected] = useState("Activities");
   const [imageError, setImageError] = useState(false);
   const navigate = useNavigate();
-  
   const handleSortClick = (event) => setSortAnchorEl(event.currentTarget);
   const handleSortClose = () => setSortAnchorEl(null);
-
   const handleFilterChange = (event, newFilter) => {
     if (newFilter !== null) setFilter(newFilter);
   };
-
   const handleImageError = () => setImageError(true);
-
-  const user = { name: "Master Code", email: "Mastercode@example.com" };
-
   const menuItems = [
     { text: "Activities", icon: <EventIcon />, path: "/activities" },
     { text: "Team", icon: <TeamIcon />, path: "/teams" },
@@ -62,18 +53,14 @@ export default function ThreeCardsLayout() {
     { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
     { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
   ];
-
   const handleSelect = (item) => {
     setSelected(item.text);
     navigate(item.path);
   };
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
-  
   return (
-    
     <Box sx={{ display: 'flex' }}>
         <Box sx={{ 
       width: "250px", 
@@ -84,7 +71,6 @@ export default function ThreeCardsLayout() {
       flexDirection: "column",
       boxShadow: "2px 0 5px rgba(0,0,0,0.1)"
     }}>
-      
       <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
         <Avatar 
           sx={{ bgcolor: "#66ff66", width: 50, height: 50 }} 
@@ -92,8 +78,7 @@ export default function ThreeCardsLayout() {
           onError={handleImageError}
         >
           {imageError ? <AccountCircleIcon sx={{ fontSize: 40, color: "#fff" }} /> : null}
-        </Avatar>
-        
+        </Avatar> 
       </Box>
       <List>
         {menuItems.map((item, index) => (
@@ -121,7 +106,6 @@ export default function ThreeCardsLayout() {
         ))}
       </List>
     </Box>
-
       {/* Main Content */}
       <Box sx={{ flexGrow: 2, overflow: "auto" }}>
         <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
@@ -144,14 +128,11 @@ export default function ThreeCardsLayout() {
             <Button variant="outlined" sx={{ borderRadius: "25px" }}>Host</Button>
             </Box>
           </Toolbar>
-        </AppBar>
-        
+        </AppBar>   
         <Card sx={{ flexGrow: 1, height: "90%", display: "flex", flexDirection: "column", p: 2 }}>
           <CardContent sx={{ color: "black" }}>
             <Typography variant="h6" fontWeight="bold" sx={{ mb: 0 }}>Activities</Typography>
             <Divider sx={{ mt: 1, width: "100%" }} />
-             {/* Category Filter (Text Format) */}
-            
           <Box sx={{ mt: 2, display: "flex", justifyContent: "",color:"black"
             }}>
          <Stack
@@ -169,8 +150,6 @@ export default function ThreeCardsLayout() {
     ))}
   </Stack>
 </Box>
-
-            {/* Search, Filter, and Sort Row */}
             <Box sx={{ mt: 2, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}>
               <TextField
                 variant="outlined"
@@ -185,7 +164,6 @@ export default function ThreeCardsLayout() {
                   ),
                 }}
               />
-
               <ToggleButtonGroup
                 value={filter}
                 exclusive
@@ -200,7 +178,6 @@ export default function ThreeCardsLayout() {
                 <ToggleButton value="Live">Live</ToggleButton>
                 <ToggleButton value="Ended">Ended</ToggleButton>
               </ToggleButtonGroup>
-
               <Button
                 variant="outlined"
                 endIcon={<ArrowDropDown />}
@@ -214,7 +191,6 @@ export default function ThreeCardsLayout() {
                 <MenuItem onClick={() => handleSortClose("Popular")}>Most Popular</MenuItem>
               </Menu>
             </Box>
-
             {/* New Inner Card with Email Notifications, Registration Form, and Share Button */}
             <Card sx={{ mt: 2, p: 2, backgroundColor: "#f9f9f9", display: "flex", flexDirection: "column", gap: 2 }}>
               {/* Top Section - Image + Details + Email Notifications */}

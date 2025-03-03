@@ -19,7 +19,6 @@ import {
 import Avatar from "./components/Avatars";
 import {
   Search as SearchIcon,
-  AccountCircle as AccountCircleIcon,
   Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,
@@ -34,7 +33,6 @@ import {
   Message as MessageIcon,
   AttachFile as AttachFileIcon,
   Image as ImageIcon,
-  CalendarToday as CalendarTodayIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/Logo.png";
@@ -44,8 +42,6 @@ import ProfileUpdation from "./components/ProfileUpdation";
 
 export default function ThreeCardsLayout() {
   const navigate = useNavigate();
-  const [] = useState(false);
-  const [] = useState("default-profile-image-url");
   const [selected, setSelected] = useState("Team");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 

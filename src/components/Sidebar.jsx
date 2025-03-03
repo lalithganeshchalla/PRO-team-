@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { 
-  Box, Avatar, Typography, Divider, List, ListItemButton, ListItemIcon, ListItemText 
-} from "@mui/material";
+import { Box, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import {
-  AccountCircle as AccountCircleIcon,
-  Event as EventIcon,
+import {Event as EventIcon,
   Group as TeamIcon,
   SignalCellularAlt as LevelsIcon,
   EmojiEvents as LeaderboardIcon,
@@ -15,19 +11,10 @@ import {
   Payment as TransactionsIcon,
   Support as SupportIcon,
   Settings as SettingsIcon,
-  Logout as LogoutIcon
-} from "@mui/icons-material";
-import profileImage from "../assets/user.png";
-
-const Sidebar = () => {
+  Logout as LogoutIcon } from "@mui/icons-material";
+  const Sidebar = () => {
   const [selected, setSelected] = useState("Levels");
   const navigate = useNavigate();
-
-  const [imageError, setImageError] = useState(false);
-  const handleImageError = () => setImageError(true);
-
-  const user = { name: "Master Code", email: "Mastercode@example.com" };
-
   const menuItems = [
     { text: "Activities", icon: <EventIcon />, path: "/activities" },
     { text: "Team", icon: <TeamIcon />, path: "/teams" },
@@ -41,40 +28,17 @@ const Sidebar = () => {
     { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
     { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
   ];
-
   const handleSelect = (item) => {
     setSelected(item.text);
     navigate(item.path);
   };
-
   return (
-    <Box sx={{ 
-      width: "250px", 
-      minHeight: "100vh", 
+    <Box sx={{   
       background: "#fff", 
-      padding: "20px", 
-      display: "flex", 
-      flexDirection: "column",
-      boxShadow: "2px 0 5px rgba(0,0,0,0.1)"
+      padding: "20px",
     }}>
-      
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
-        <Avatar 
-          sx={{ bgcolor: "#66ff66", width: 50, height: 50 }} 
-          src={imageError ? "" : profileImage} 
-          onError={handleImageError}
-        >
-          {imageError ? <AccountCircleIcon sx={{ fontSize: 40, color: "#fff" }} /> : null}
-        </Avatar>
-        <Box>
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>{user.name}</Typography>
-          <Typography variant="body2" sx={{ color: "gray" }}>{user.email}</Typography>
-        </Box>
-      </Box>
-
       <Divider sx={{ marginBottom: 2 }} />
-
-      <List>
+      <List sx={{ width: "100%", maxWidth: 360, paddingTop:8 }}>
         {menuItems.map((item, index) => (
           <ListItemButton 
             key={index} 
@@ -102,5 +66,4 @@ const Sidebar = () => {
     </Box>
   );
 };
-
 export default Sidebar;
