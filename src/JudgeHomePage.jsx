@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, AppBar, Toolbar, Button, InputBase, Avatar, Drawer, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { Home, Assignment, Assessment, Notifications, BarChart, Analytics, Logout, Search as SearchIcon } from "@mui/icons-material";
+import { Home, Assignment, Assessment, Notifications, BarChart, Analytics, Logout as LogoutIcon, Search as SearchIcon } from "@mui/icons-material";
 import DashboardCards from "./components/DashboardCards";
 import AssignedChallenges from "./components/AssignedChallenges";
 import UpcomingDeadlines from "./components/UpcomingDeadlines";
@@ -15,7 +15,7 @@ const menuItems = [
   { text: "Progress Monitoring", icon: <BarChart /> ,path: "/progressmonitoring" },,
   { text: "Notifications", icon: <Notifications /> ,path: "/judgenotification" },
   { text: "Reports & Analysis", icon: <Analytics /> ,path: "/report" },
-  { text: "Logout", icon: <Logout /> ,path: "/out" },
+  { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
 ];
 
 const JudgeHomePage = () => {

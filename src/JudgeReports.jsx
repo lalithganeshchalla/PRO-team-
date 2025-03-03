@@ -25,20 +25,22 @@ import {
   Analytics,
   Logout,
   Search as SearchIcon,
+  Logout as LogoutIcon,
 } from "@mui/icons-material";
 import { LineChart, Line, BarChart as BChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import logo from "./assets/Logo.png";
 import LanguageDropDown from "./components/LanguageDropDown";
 import { useNavigate } from "react-router-dom";
+import { color } from "chart.js/helpers";
 
 const menuItems = [
   { text: "Home", icon: <Home />, path: "/home" },
   { text: "Assignments", icon: <Assignment />, path: "/assignment" },
   { text: "Submission Evaluation", icon: <Assessment />, path: "/submissionevaluation" },
   { text: "Progress Monitoring", icon: <BarChart />, path: "/progressmonitoring" },
-  { text: "Notifications", icon: <Notifications />, path: "/notifications" },
+  { text: "Notifications", icon: <Notifications />, path: "/judgenotification" },
   { text: "Reports & Analysis", icon: <Analytics />, path: "/report" },
-  { text: "Logout", icon: <Logout />, path: "/logout" },
+  { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
 ];
 
 const evaluationData = [
@@ -130,7 +132,7 @@ const ReportsAnalytics = () => {
       </AppBar>
 
         {/* Dashboard Metrics */}
-        <Grid container spacing={3} marginTop={2}>
+        <Grid container spacing={3} marginTop={8}>
           {["Total Submissions: 1,247", "Average Score: 8.4", "Active Judges: 28"].map((text, idx) => (
             <Grid item xs={12} sm={4} key={idx}>
               <Card sx={{ padding: 2, textAlign: "center", borderRadius: "12px" }}>

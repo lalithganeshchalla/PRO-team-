@@ -31,7 +31,7 @@ import {
   Assessment,
   BarChart,
   Analytics,
-  Logout,
+  Logout as LogoutIcon,
   Search as SearchIcon,
 } from "@mui/icons-material";
 import logo from "./assets/Logo.png";
@@ -45,7 +45,7 @@ const menuItems = [
   { text: "Progress Monitoring", icon: <BarChart />, path: "/progressmonitoring" },
   { text: "Notifications", icon: <Notifications />, path: "/judgenotification" },
   { text: "Reports & Analysis", icon: <Analytics />, path: "/report" },
-  { text: "Logout", icon: <Logout />, path: "/out" },
+  { text: "Logout", icon: <LogoutIcon />, color: "red", path: "/logout" }
 ];
 
 const submissions = [
