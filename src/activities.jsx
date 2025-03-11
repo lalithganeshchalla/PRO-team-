@@ -107,6 +107,7 @@ export default function ThreeCardsLayout() {
       </List>
     </Box>
       {/* Main Content */}
+      {/* Main Content */}
       <Box sx={{ flexGrow: 2, overflow: "auto" }}>
         <AppBar position="fixed" sx={{ background: "#fff", boxShadow: "none", padding: "10px 0", maxWidth: "100%", top: 0 }}>
           <Toolbar sx={{ display: "flex" }}>
